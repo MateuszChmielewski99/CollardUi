@@ -1,0 +1,15 @@
+<h2 class="title">{{title}}</h2>
+
+<div class="poster-wrapper">
+    <ng-template [ngIf]="!isLoading">
+        <img class="poster" *ngFor="let movie of movies" [src]="movie.poster" class="poster"
+            [routerLink]="['/movie',movie.id]" />
+    </ng-template>
+    <ng-template [ngIf]="isLoading">
+        <div class="loading-wrapper" *ngFor="let i of [].constructor(8)">
+            <div class="spinner-grow" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+        </div>
+    </ng-template>
+</div>

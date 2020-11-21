@@ -1,0 +1,12 @@
+nav{
+    position: sticky;
+    top: 0;
+}
+
+.spacer{
+    flex:1
+}
+
+.nav-button{
+    color:rgb(251,91,139)
+}

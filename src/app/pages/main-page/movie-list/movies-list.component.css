@@ -1,0 +1,37 @@
+.container {
+  color: azure;
+  background-color: rgb(68, 68, 68);
+  padding-top: 3vh;
+  padding-bottom: 1.5vh;
+  margin: 0;
+}
+
+.poster {
+  width: 25w;
+  height: 32vh;
+  margin: 5px 15px 5px 15px;
+  background-color: rgb(68, 68, 68);
+  cursor: pointer;
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.title {
+  color: azure;
+  padding-left: 2vw;
+  background-color: rgb(68, 68, 68);
+  padding-top: 6px;
+}
+
+.poster-wrapper {
+  padding-top: 9px;
+  margin: 0 9px 0px 9px;
+  background-color: rgb(68, 68, 68);
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.loading-wrapper {
+  margin-left: 20px;
+  height: 100px;
+  padding-top: 20px;
+}
