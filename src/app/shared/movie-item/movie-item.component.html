@@ -1,2 +1,9 @@
-<img class="poster"  [src]="movie.poster" class="poster"
-    [routerLink]="['/movie', movie.id]" />
+<div *ngIf="hasError === false">
+    <div class="poster-wrapper">
+        <img class="m_poster" [src]="movie.poster" class="poster" [routerLink]="['/movie', movie.id]"
+            (error)="onError()" />
+    </div>
+</div>
+<div *ngIf="hasError === true" [style.background-color]="color" class="error_title">
+    <div style="margin: 0 auto">{{movie.title}}</div>
+</div>

@@ -14,4 +14,8 @@ export class MoviesListComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  onImageError(event) {
+    event.target.style.display = "none";
+  }
 }

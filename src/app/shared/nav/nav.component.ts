@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { inject } from "@angular/core/testing";
-import { AuthServiceService } from "src/app/services/auth-service.service";
+import { Router } from '@angular/router';
+import { AuthService } from "src/app/services/auth.service";
 import { UserService } from "src/app/services/user-service.service";
 
 @Component({
@@ -10,19 +11,21 @@ import { UserService } from "src/app/services/user-service.service";
 })
 export class NavComponent implements OnInit {
   constructor(
-    private authService: AuthServiceService,
-    private userService: UserService
+    private authService: AuthService,
+    private userService: UserService,
+    private router:Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   signInUser() {
-    this.authService.signIn().then((s) => {
-      this.authService.user$.subscribe((user) => {
+    this.authService.signIn().then(() => {
+      this.authService.getUser().subscribe((user) => {
         if (user) {
-          this.userService.signIn(user).subscribe((res) => {
+          this.userService.signIn(user.id).subscribe((res) => {
             if ((res as any).created) {
-              console.log("Firs time");
+              this.router.navigateByUrl('/first_login')
             }
           });
         }

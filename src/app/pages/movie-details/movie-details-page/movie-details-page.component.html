@@ -1,20 +1,53 @@
-<div *ngIf="movie; else loading">
+<div class="m_content" *ngIf="movie; else loading">
     <div class="content">
         <div class="m__card">
-            <div class="card-header">{{movie.title}}</div>
-            <div class="content_wrapper">
-                <div class="movie__poster">
-                    <img [src]="movie.poster" alt="Card image">
-                </div>
-                <div style="margin-left: 10px;">
-                    <div class="movie__right">{{movie.Plot}}</div>
-                    <div class="movie__right"><span style="color: dodgerblue;">Director:</span> {{movie.director}}</div>
-                    <div class="movie__right"><span style="color: forestgreen;">Rating:</span> {{movie.score}}</div>
+            <div class="card-header">
+                <h1>{{movie.title}}</h1>
+                <start-button *ngIf="user" class="star-btn" [filled]="isFavouriteMovie" (filledStartClick)="startOnClickHandler()"
+                    (emptyStartClick)="startOnClickHandler()"></start-button>
+            </div>
+            <div>
+                <div class="content_wrapper">
+                    <div class="movie__poster">
+                        <img [src]="movie.poster" alt="Card image">
+                    </div>
+                    <div class="main-info-wrapper">
+                        <div class="content-column">
+                            <div class="movie__right"><span style="color: dodgerblue;">Director:</span>
+                                {{movie.director}}
+                            </div>
+                            <div class="movie__right"><span style="color: forestgreen;">Rating:</span> {{movie.score}}
+                            </div>
+                            <div class="movie__right"><span style="color:rgb(251,91,139)">Genres:</span>
+                                <ul>
+                                    <li>{{movie.firstGenre}}</li>
+                                    <li>{{movie.secondGenre}}</li>
+                                    <li>{{movie.thirdGenre}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="content-column">
+                            <div class="movie__right">
+                                <span style="color: blueviolet;">Leading actors:</span>
+                                <ul>
+                                    <li>{{movie.firstLeadingActor}}</li>
+                                    <li>{{movie.secondLeadingActor}}</li>
+                                    <li>{{movie.thirdLeadingActor}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="comments-section-wrap">
+            <Comments [(comments)]="comments" (commentRemove)="commentRemoveHandler($event)"
+                (commentAdd)="commentAddHandler($event)"></Comments>
+        </div>
     </div>
 </div>
+
 <ng-template #loading>
     <div class="loader_wrapper">
         <div class="spinner-border text-light" role="status">

@@ -1,7 +1,22 @@
 <div class="photo" src="../assets/movie.jpg"></div>
 <div style="background-color: rgb(68, 68, 68);">
-    <app-movies-list title="Comedies" [movies]="this.comedies" [isLoading]="areComediesLoading"></app-movies-list>
+    <app-movies-list title="The newest" [movies]="this.newest" [isLoading]="areNewestLoading"></app-movies-list>
 </div>
 <div style="background-color: rgb(68, 68, 68);">
-    <app-movies-list title="Horrors" [movies]="this.horrors" [isLoading]="areHorrorsLoading"></app-movies-list>
+    <app-movies-list title="Top rated" [movies]="this.topRated" [isLoading]="areTopRatedLoading"></app-movies-list>
 </div>
+<div class="genres_wrapper">
+    <div class="genre_item" [routerLink]="['/genre/action']" >Action</div>
+    <div class="genre_item" [routerLink]="['/genre/adventure']">Adventure</div>
+    <div class="genre_item" [routerLink]="['/genre/animation']">Animation</div>
+    <div class="genre_item" [routerLink]="['/genre/bibliography']">Bibliography</div>
+    <div class="genre_item" [routerLink]="['/genre/comedy']">Comedy</div>
+    <div class="genre_item" [routerLink]="['/genre/crime']">Crime</div>
+    <div class="genre_item" [routerLink]="['/genre/drama']">Drama</div>
+    <div class="genre_item" [routerLink]="['/genre/fantasy']">Fantasy</div>
+    <div class="genre_item" [routerLink]="['/genre/horror']">Horror</div>
+    <div class="genre_item" [routerLink]="['/genre/sci-fi']">Sci-fi</div>
+</div>
+
+
+<app-first-overlay hidden="false"></app-first-overlay>

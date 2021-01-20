@@ -1,0 +1,126 @@
+<div class="settings-wrp">
+    <h1 class="settings-header">Settings</h1>
+    <div class="settings-content-wrp">
+        <form [formGroup]="recForm" (ngSubmit)="onSubmit()">
+            <div class="section-title-l">Alghoritm</div>
+            <div class="m-row">
+                <div class="m-column-2">
+                    <div class="section-title-l">
+                        Non Hierarchical
+                    </div>
+                    <div class="radio-form-wrp">
+                        <label>
+                            <input type="radio" formControlName="algorithm" value="kmeans" />
+                            K-means
+                        </label>
+                        <label>
+                            <input type="radio" formControlName="algorithm" value="kmedoids" />
+                            K-medoids
+                        </label>
+                    </div>
+                </div>
+                <div class="m-column-2">
+                    <div class="section-title-l">
+                        Hierarchical
+                    </div>
+                    <div class="radio-form-wrp">
+                        <label>
+                            <input type="radio" formControlName="algorithm" value="Ward" />
+                            Ward method
+                        </label>
+                        <label>
+                            <input type="radio" formControlName="algorithm" value="maxLink" />
+                            Complete-linkage clustering
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="m-row">
+                <div class="m-column-1">
+                    <div class="section-title-l">
+                        Distance
+                    </div>
+                    <div class="distance-wrp">
+                        <div class="distance-col-wrp">
+                            <label>
+                                <input type="radio" formControlName="distance" value="euclidean" />
+                                Euclidean
+                            </label>
+                            <label>
+                                <input type="radio" formControlName="distance" value="manhattan" />
+                                Manhattan
+                            </label>
+                        </div>
+                        <label>
+                            <input type="radio" formControlName="distance" value="cosine" />
+                            Cosine
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="m-row">
+                <div class="m-column-1">
+                    <div class="section-title-l">
+                        Divide dataset by
+                    </div>
+                    <div class="distance-wrp">
+                        <div class="distance-col-wrp">
+                            <label>
+                                <input type="checkbox" formControlName="divideByFirst" value="first" />
+                                First genre
+                            </label>
+                            <label>
+                                <input type="checkbox" formControlName="divideBySecond" value="second" />
+                                Second genre
+                            </label>
+                        </div>
+                        <label>
+                            <input type="checkbox" formControlName="divideByThird" value="third" />
+                            Third genre
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="m-row">
+                <div class="m-column-1">
+                    <div class="section-title-l">
+                        Number of groups
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; width: 80%; align-self: center;">
+                        <label for="customRange1" class="form-label">Currnet number:
+                            {{this.recForm.value.groupNumber}}</label>
+                        <input type="range" formControlName="groupNumber" class="form-range" id="customRange1" min="3"
+                            max="10">
+                    </div>
+
+                </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="m-row">
+                <div class="m-column-1">
+                    <div class="section-title-l">
+                        Normalize data
+                    </div>
+                    <div style="padding-top: 15px; display: flex; flex-direction: column; align-self: center;">
+                        <label>
+                            <input type="checkbox" formControlName="normalizeData" />
+                            Should data be normalized
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: row; align-self: flex-end; margin: auto auto 0 auto; gap:15px;">
+                <button class="btn btn-primary submit-btn" type="button" *ngIf="isLoading">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span class="sr-only">Loading...</span>
+                </button>
+                <button class="btn btn-primary submit-btn" type="submit"
+                    [disabled]="!this.recForm.valid">Recommend</button>
+            </div>
+        </form>
+    </div>
+</div>

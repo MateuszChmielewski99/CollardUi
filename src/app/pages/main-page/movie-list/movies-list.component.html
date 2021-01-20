@@ -3,7 +3,7 @@
 <div class="poster-wrapper">
     <ng-template [ngIf]="!isLoading">
         <img class="poster" *ngFor="let movie of movies" [src]="movie.poster" class="poster"
-            [routerLink]="['/movie',movie.id]" />
+            [routerLink]="['/movie',movie.id]" (error)="onImageError($event)"/>
     </ng-template>
     <ng-template [ngIf]="isLoading">
         <div class="loading-wrapper" *ngFor="let i of [].constructor(8)">

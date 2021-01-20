@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MovieListingItem } from "collard_movies_model";
 import { MovieService } from "src/app/services/movie.service";
-import { categories } from "../../../models/Categories";
+import { Genres } from "../../../models/Categories";
 
 @Component({
   selector: "app-page",
@@ -10,26 +10,26 @@ import { categories } from "../../../models/Categories";
 })
 export class PageComponent implements OnInit {
   title = "CollardMovies";
-  comedies: MovieListingItem[];
-  horrors: MovieListingItem[];
-  areComediesLoading = true;
-  areHorrorsLoading = true;
+  newest: MovieListingItem[];
+  topRated: MovieListingItem[];
+  areNewestLoading = true;
+  areTopRatedLoading = true;
   constructor(private movieService: MovieService) {}
 
   ngOnInit() {
-    this.movieService.getMoviesByGenre(categories.comedy).subscribe({
+    this.movieService.getNewest(8).subscribe({
       next: (s) => {
-        this.comedies = s.result;
+        this.newest = s;
       },
-      complete: () => (this.areComediesLoading = false),
+      complete: () => (this.areNewestLoading = false),
     });
 
-    this.movieService.getMoviesByGenre(categories.horror).subscribe({
+    this.movieService.getHigerRated(15).subscribe({
       next: (s) => {
-        this.horrors = s.result;
+        this.topRated = s;
       },
       complete: () => {
-        this.areHorrorsLoading = false;
+        this.areTopRatedLoading = false;
       },
     });
   }

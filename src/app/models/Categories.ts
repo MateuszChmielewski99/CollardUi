@@ -1,4 +1,4 @@
-export enum categories {
+export enum Genres {
     horror="Horror",
     comedy="Comedy",
     action="Action"

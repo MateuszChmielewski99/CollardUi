@@ -10,3 +10,7 @@ nav{
 .nav-button{
     color:rgb(251,91,139)
 }
+
+.nav-item:active{
+    color: red;
+}
