@@ -17,14 +17,9 @@ export class RecommendedComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    
-      
-      if (this.movies.length) {
-        this.isLoading = false;
-        return;
-      }
+    const user = this.authService.getUserData();
 
-      this.userService.getRecommended('109938027001218246375').subscribe(
+      this.userService.getRecommended(user.id).subscribe(
         (response) => {
           this.movies = response;
           this.isLoading = false;

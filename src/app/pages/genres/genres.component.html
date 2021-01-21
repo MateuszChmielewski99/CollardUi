@@ -1,9 +1,15 @@
 <div class="page-container">
     <h1>{{type}}</h1>
-    <div *ngIf="!isLoading; else loading">
-        Some movies
-
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    <div class="movies-wrapper" *ngIf="!isLoading; else loading">
+        <div
+            *ngFor="let movie of movies | paginate: { currentPage: pageNumber, itemsPerPage: pageSize, totalItems:totalCount };">
+            <movie-item [movie]="movie" class="single-movie">
+            </movie-item>
+        </div>
+    </div>
+    <div style="flex: 1;"></div>
+    <div>
+        <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
     </div>
     <ng-template #loading>
         <div class="loader_wrapper">

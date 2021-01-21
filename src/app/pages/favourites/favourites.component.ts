@@ -19,12 +19,7 @@ export class FavouritesComponent implements OnInit {
   ngOnInit() {
     this.authService.getUser().subscribe((user) => {
         if (!user) return;
-
-        if(this.movies.length){
-          this.isLoading = false;
-          return;
-        }
-
+        
         this.userService.getUserFavourites(user.id).subscribe(
           (response) => {
             this.movies = response;

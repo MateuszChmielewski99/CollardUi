@@ -12,11 +12,13 @@ export class MovieService {
 
   getMoviesByGenre(
     genre: string,
-    limit: number = 8
+    limit: number = 8,
+    pageNumber:number
   ): Observable<MovieListingResponse> {
     const queryParams: HttpParams = new HttpParams()
       .set("genre", genre)
-      .set("limit", limit.toString());
+      .set("limit", limit.toString())
+      .set("pageNumber", pageNumber.toString());
 
     return this.client.get<MovieListingResponse>(`${this.url}/listing`, {
       params: queryParams,

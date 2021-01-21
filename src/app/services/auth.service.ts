@@ -15,7 +15,7 @@ export class AuthService {
     this.initGoogleAuth();
   }
 
-  private async initGoogleAuth(): Promise<void> {
+  private async initGoogleAuth() {
     const pload = new Promise((resolve) => {
       gapi.load("auth2", resolve);
     });
@@ -48,20 +48,23 @@ export class AuthService {
     this.userSource.next(userReference);
   }
 
-  async getInitUser() {
-    const isLoggedIn = await this.authInstance.isSignedIn;
-    if (!isLoggedIn) {
-      this.isLoading.next(false);
-      return;
-    }
+  getInitUser() {
+    this.initGoogleAuth().then(() => {
+      const signedIn = this.authInstance.isSignedIn.get();
+     
+      if (!signedIn) {
+        this.isLoading.next(false);
+        this.userSource.next(null);
+        return;
+      }
 
-    const currentUser = await this.authInstance.currentUser;
-
-    this.userSource.next({
-      id: currentUser.get().getId(),
-      name: currentUser.get().getBasicProfile().getName(),
+      const user = this.authInstance.currentUser.get();
+     
+      this.userSource.next({
+        id: user.getId(),
+        name: user.getBasicProfile().getName(),
+      });
     });
-
     this.isLoading.next(false);
   }
 
@@ -83,7 +86,6 @@ export class AuthService {
   }
 
   getIsLoading() {
-    this.getInitUser();
     return this.isLoading.asObservable();
   }
 }

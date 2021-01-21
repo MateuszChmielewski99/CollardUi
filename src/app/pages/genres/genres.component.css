@@ -1,7 +1,9 @@
 .page-container {
-  height: 100%;
+  height: calc(100% - 56px);
   color: whitesmoke;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .loader_wrapper {
@@ -22,4 +24,15 @@ li > a {
 
 .ngx-pagination a, .ngx-pagination button {
   color: whitesmoke !important;
+}
+
+.single-movie{
+  margin:10px;
+  cursor: pointer;
+}
+
+.movies-wrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
