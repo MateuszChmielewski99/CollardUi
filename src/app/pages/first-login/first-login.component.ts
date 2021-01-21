@@ -34,11 +34,11 @@ export class FirstLoginComponent implements OnInit {
         this.isLoading = false;
       }
     );
-    this.authService.getUser().subscribe(user => this.userId = user.id);
   }
 
   onImageError(event) {
-    event.target.parentNode.style.display = "none";
+    event.target.style.display = "none"
+    event.target.nextElementSibling.style.display = "flex";
   }
 
   addUserMovie(event, movie: MovieReference) {
@@ -57,10 +57,11 @@ export class FirstLoginComponent implements OnInit {
   }
 
   handleSave() {
-    if(!this.userId) return;
+    const userId = this.authService.getUserData().id;
+    if(!userId) return;
     
     const request: UpdateUser = {
-      _id: this.userId,
+      _id: userId,
       favourites: this.userMovies,
     };
 
@@ -70,6 +71,6 @@ export class FirstLoginComponent implements OnInit {
   }
 
   private setBoxShadow(event, value) {
-    event.target.parentNode.style.boxShadow = value;
+    event.target.style.boxShadow = value;
   }
 }

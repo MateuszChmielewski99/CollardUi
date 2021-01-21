@@ -16,7 +16,10 @@
     <div class="movies-container" *ngIf="!isLoading; else loading">
         <div *ngFor="let movie of movieList">
             <div class="movie-item" (click)="addUserMovie($event,movie)">
-                <img [src]="movie.poster" (error)="onImageError($event)" />
+                <img [src]="movie.poster" (error)="onImageError($event)"/>
+                <div class="movie-error-title" style="display: none;">
+                    {{movie.title}}
+                </div>
             </div>
         </div>
     </div>

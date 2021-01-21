@@ -59,7 +59,7 @@ export class AuthService {
       }
 
       const user = this.authInstance.currentUser.get();
-     
+      console.log(user);
       this.userSource.next({
         id: user.getId(),
         name: user.getBasicProfile().getName(),

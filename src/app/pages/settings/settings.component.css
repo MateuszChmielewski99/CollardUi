@@ -19,6 +19,12 @@
   width: 80%;
   height: 100%;
   border-radius: 3px;
+  background-color: rgba(255, 255, 255, .15);
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+  border-radius: 30px;
+  color: lightgray;
+  align-self: center;
+  margin-top: 10px;
 }
 
 .m-column-2 {
@@ -44,6 +50,7 @@
     font-size: large;
     margin: 0 auto;
     font-weight: 500;
+    font-size: x-large;
 }
 
 .radio-form-wrp{
@@ -99,4 +106,12 @@ form{
     border-top: 2px solid #e9ecef;
     width: 95%;
     align-self: center;
+}
+
+label{
+    font-size: large;
+}
+
+.dropdown-divider{
+    border-top: solid 2px #78797a;
 }

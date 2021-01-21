@@ -44,16 +44,14 @@ export class MovieDetailsPageComponent implements OnInit {
     });
 
     this.authService.getUser().subscribe((user) => {
-        this.user = user;
-      });
-
-    if (!this.user) return;
-
-    this.userService
-      .checkIfIsFavourite(this.movieId, this.user.id)
-      .subscribe((response) => {
-        this.isFavouriteMovie = response.result;
-      });
+      this.user = user;
+      console.log(user,'user');
+      this.userService
+        .checkIfIsFavourite(this.movieId, user.id)
+        .subscribe((response) => {
+          this.isFavouriteMovie = response.result;
+        });
+    });
   }
 
   startOnClickHandler() {
