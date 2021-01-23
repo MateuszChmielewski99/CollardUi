@@ -4,14 +4,15 @@
     padding: 20px;
 }
 .movies-wrapper{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, 185px);
+    grid-template-rows: 1fr 1fr;
 }
 
 .single-movie{
-    margin:10px;
     cursor: pointer;
+    width: fit-content;
 }
 
 .loader_wrapper{
@@ -21,3 +22,9 @@
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 770px) {
+    .movies-wrapper{
+        justify-content: center;
+    }
+  }

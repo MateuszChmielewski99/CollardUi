@@ -4,6 +4,6 @@
             (error)="onError()" />
     </div>
 </div>
-<div *ngIf="hasError === true" [style.background-color]="color" class="error_title">
+<div *ngIf="hasError === true" [style.background-color]="color" class="error_title" [routerLink]="['/movie', movie.id]">
     <div style="margin: 0 auto">{{movie.title}}</div>
 </div>

@@ -3,22 +3,26 @@
         <div class="m__card">
             <div class="card-header">
                 <h1>{{movie.title}}</h1>
-                <start-button *ngIf="user" class="star-btn" [filled]="isFavouriteMovie" (filledStartClick)="startOnClickHandler()"
-                    (emptyStartClick)="startOnClickHandler()"></start-button>
+                <start-button *ngIf="user" class="star-btn" [filled]="isFavouriteMovie"
+                    (filledStartClick)="startOnClickHandler()" (emptyStartClick)="startOnClickHandler()"></start-button>
             </div>
             <div>
                 <div class="content_wrapper">
                     <div class="movie__poster">
-                        <img [src]="movie.poster" alt="Card image">
+                        <img *ngIf="!hasImageError; else errorImg" [src]="movie.poster" [alt]="movie.title"
+                            (aria-label)="movie.title" (error)="onError()">
                     </div>
+                    <ng-template #errorImg>
+                        <div class="error_title">{{movie.title}}</div>
+                    </ng-template>
                     <div class="main-info-wrapper">
                         <div class="content-column">
                             <div class="movie__right"><span>Director:</span>
                                 {{movie.director}}
                             </div>
-                            <div class="movie__right"><span >Rating:</span> {{movie.score}}
+                            <div class="movie__right"><span>Rating:</span> {{movie.score}}
                             </div>
-                            <div class="movie__right"><span >Genres:</span>
+                            <div class="movie__right"><span>Genres:</span>
                                 <ul>
                                     <li>{{movie.firstGenre}}</li>
                                     <li>{{movie.secondGenre}}</li>
@@ -28,7 +32,7 @@
                         </div>
                         <div class="content-column">
                             <div class="movie__right">
-                                <span >Leading actors:</span>
+                                <span>Leading actors:</span>
                                 <ul>
                                     <li>{{movie.firstLeadingActor}}</li>
                                     <li>{{movie.secondLeadingActor}}</li>

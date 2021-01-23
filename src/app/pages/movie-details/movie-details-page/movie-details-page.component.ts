@@ -26,6 +26,7 @@ export class MovieDetailsPageComponent implements OnInit {
   comments: Comment[] = [];
   isFavouriteMovie: boolean = false;
   user: UserReference | null = this.authService.getUserData();
+  hasImageError:boolean = false;
   constructor(
     private router: ActivatedRoute,
     private movieService: MovieService,
@@ -100,5 +101,9 @@ export class MovieDetailsPageComponent implements OnInit {
     this.commentService.addComment(request).subscribe(() => {
       this.comments.push(comment);
     });
+  }
+
+  onError(){
+    this.hasImageError = true;
   }
 }

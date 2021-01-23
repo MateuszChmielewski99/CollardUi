@@ -21,3 +21,10 @@
     align-items: center;
     justify-content: center;
 }
+
+
+@media (max-width: 755px) {
+    .movies-wrapper{
+        justify-content: center;
+    }
+  }

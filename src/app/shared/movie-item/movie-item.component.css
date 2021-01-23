@@ -1,19 +1,18 @@
 .m_poster {
   background-color: rgb(68, 68, 68);
   cursor: pointer;
-  cursor: pointer;
 }
 
 .poster-wrapper {
   margin: 5px 15px 5px 15px;
   box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  width: fit-content;
 }
 
 .error_title {
   margin: 5px 15px 5px 15px;
   height: 268px;
-  width: 212px;
-  cursor: pointer;
+  width: 186px;
   cursor: pointer;
   background-color: darkgrey;
   display: flex;
