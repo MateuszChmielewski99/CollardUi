@@ -45,13 +45,14 @@ export class MovieDetailsPageComponent implements OnInit {
 
     this.authService.getUser().subscribe((user) => {
       this.user = user;
-      console.log(user,'user');
+      if(!user) return;
+
       this.userService
         .checkIfIsFavourite(this.movieId, user.id)
         .subscribe((response) => {
           this.isFavouriteMovie = response.result;
         });
-    });
+    })
   }
 
   startOnClickHandler() {
@@ -97,7 +98,6 @@ export class MovieDetailsPageComponent implements OnInit {
     };
 
     this.commentService.addComment(request).subscribe(() => {
-      console.log("powinno dodać");
       this.comments.push(comment);
     });
   }

@@ -12,7 +12,6 @@ export class AuthService {
   private gapiSetup: boolean;
 
   constructor() {
-    this.initGoogleAuth();
   }
 
   private async initGoogleAuth() {
@@ -59,11 +58,11 @@ export class AuthService {
       }
 
       const user = this.authInstance.currentUser.get();
-      console.log(user);
       this.userSource.next({
         id: user.getId(),
         name: user.getBasicProfile().getName(),
       });
+      
     });
     this.isLoading.next(false);
   }
