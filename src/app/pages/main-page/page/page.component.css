@@ -2,12 +2,17 @@
   /* filter: blur(5px); */
   background-image: url("../../../../assets/movie.jpg");
   width: 100%;
-  height: 80vh;
+  height: 60vh;
   background-size: 100% 100%;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  flex-direction: column;
+  color: darkgrey;
+  text-shadow: 3px 2px 2px #000;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .genres_wrapper {

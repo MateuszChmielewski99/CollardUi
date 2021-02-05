@@ -123,3 +123,12 @@
         </form>
     </div>
 </div>
+<div [ngClass]="{
+    notyfication:true,
+    hidden:!isNotyficationVisible,
+    fadeOut:hideNotyfication
+}">
+    <div class="notyfication_close" (click)="hideNotyficationFn($event)"> x </div>
+    Some notyfication message
+    <div [routerLink]="['/recommended']" class="notyfication_link">Go to recommended</div>
+</div>

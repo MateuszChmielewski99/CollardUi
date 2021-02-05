@@ -1,9 +1,9 @@
 .page-container {
-  height: calc(100% - 56px);
   color: whitesmoke;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  height: calc(100% - 56px);
 }
 
 .loader_wrapper {
@@ -22,17 +22,41 @@ li > a {
   color: whitesmoke !important;
 }
 
-.ngx-pagination a, .ngx-pagination button {
+.ngx-pagination a,
+.ngx-pagination button {
   color: whitesmoke !important;
 }
 
-.single-movie{
-  margin:10px;
+.single-movie {
+  margin: 10px;
   cursor: pointer;
 }
 
-.movies-wrapper{
+.movies-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.paginate-wrp {
+  width: 100%;
+  border-radius: 30px;
+  padding-top: 18px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+}
+
+span{
+  color:azure;
+}
+
+@media(max-width:550px){
+  .page-container{
+    justify-content: center;
+    height: unset;
+  }
+
+  .movies-wrapper{
+    justify-content: center;
+  }
 }

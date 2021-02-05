@@ -23,10 +23,10 @@
                             <div class="movie__right"><span>Rating:</span> {{movie.score}}
                             </div>
                             <div class="movie__right"><span>Genres:</span>
-                                <ul>
-                                    <li>{{movie.firstGenre}}</li>
-                                    <li>{{movie.secondGenre}}</li>
-                                    <li>{{movie.thirdGenre}}</li>
+                                <ul class="genres">
+                                    <li [routerLink]="['/genre',movie.firstGenre]">{{movie.firstGenre}}</li>
+                                    <li [routerLink]="['/genre',movie.secondGenre]">{{movie.secondGenre}}</li>
+                                    <li [routerLink]="['/genre',movie.thirdGenre]">{{movie.thirdGenre}}</li>
                                 </ul>
                             </div>
                         </div>

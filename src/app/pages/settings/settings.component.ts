@@ -16,9 +16,14 @@ export class SettingsComponent implements OnInit {
     private recommendationService: RecommendService
   ) {}
   private isDistanceDisabled = false;
+  private hideNotyfication = false;
+  private isNotyficationVisible = false;
   isLoading: boolean = false;
   ngOnInit() {
     this.onChanges();
+    setTimeout(() => {
+      this.isNotyficationVisible = true;
+    },500)
   }
 
   recForm = this.fb.group({
@@ -50,15 +55,26 @@ export class SettingsComponent implements OnInit {
     const request: RecommendMoviesRequest = {
       userId,
       ...this.recForm.value,
-      distance:this.recForm.get('distance').value
+      distance: this.recForm.get("distance").value,
     };
     this.isLoading = true;
     this.recommendationService.recommend(request).subscribe(
-      () => {this.isLoading = false;},
-      () => {this.isLoading = false;},
+      () => {
+        this.isLoading = false;
+      },
+      () => {
+        this.isLoading = false;
+      },
       () => {
         this.isLoading = false;
       }
     );
+  }
+
+  hideNotyficationFn(event: MouseEvent) {
+    this.hideNotyfication = true;
+    setTimeout(() => {
+      this.isNotyficationVisible = false;
+    }, 500);
   }
 }
